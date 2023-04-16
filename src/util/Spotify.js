@@ -1,7 +1,7 @@
 import spotifyToken from "./config";
 
 const clientID = spotifyToken;
-const redirectURI = 'http://localhost:3000/';
+const redirectURI = 'https://scottkennethjackson-mixtape.netlify.app/';
 
 let accessToken;
 
