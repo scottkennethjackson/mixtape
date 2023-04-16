@@ -1,0 +1,7 @@
+.TrackList {
+    width: 100%;
+}
+
+.TrackList button:hover {
+    color: #61dafb;
+}

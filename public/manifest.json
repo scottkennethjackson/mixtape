@@ -1,0 +1,13 @@
+{
+  "lang": "en",
+  "name": "Mixtape",
+  "icon": {
+      "src": "favicon.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+  },
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#61dafb",
+  "background_color": "#282c34"
+}
