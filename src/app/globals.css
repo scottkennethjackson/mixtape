@@ -8,3 +8,8 @@
     padding: 0;
     /*border: 1px dotted red;*/
 }
+
+.SearchResults::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}

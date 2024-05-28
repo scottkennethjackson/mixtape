@@ -13,6 +13,10 @@ module.exports = {
         '15%': '15%'
       },
 
+      boxShadow: {
+        'bottom': '0 .25rem .25rem .25rem #000000'
+      },
+
       backgroundImage: {
         'background-img': "url('/public/images/background.jpg')"
       },
@@ -20,9 +24,10 @@ module.exports = {
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
-        'darkgray': '#282c34',
         'darkgrey': '#282c34',
-        'lightblue': '#61dafb'
+        'lightblue': '#61dafb',
+        'hoverblue': '#56c0dd',
+        'activeblue': '#4ba6c0'
       },
 
       fontFamily: {

@@ -1,11 +1,16 @@
-import { Permanent_Marker } from "next/font/google";
-import { Work_Sans } from "next/font/google";
+import { Permanent_Marker, Poppins, Work_Sans } from "next/font/google";
 import "./globals.css";
 
 const marker = Permanent_Marker({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--marker"
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--poppins"
 });
 
 const work = Work_Sans({
@@ -21,8 +26,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${marker.variable} marker ${work.variable} work`}>{children}</body>
+    <html lang="en" className="bg-darkgrey">
+      <body className={`${marker.variable} marker ${poppins.variable} poppins ${work.variable} work`}>{children}</body>
     </html>
   );
 };
