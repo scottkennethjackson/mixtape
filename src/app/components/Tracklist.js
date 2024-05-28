@@ -1,11 +1,19 @@
 import React from "react";
+import Track from "./Track";
 
-function Tracklist () {
+function Tracklist (props) {
     return (
-        <div className="TrackList">
-        {/* <!-- You will add a map method that renders a set of Track components  --> */}
+      <div className="TrackList font-work">
+        {props.userSearchResults.map((track) => (
+          <Track
+            track={track}
+            key={track.id}
+            isRemoval={props.isRemoval}
+            onAdd={props.onAdd}
+          />
+        ))}
       </div>
     );
-}
+};
 
 export default Tracklist;

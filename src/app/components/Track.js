@@ -1,16 +1,27 @@
 import React from "react";
 
-function Track () {
-    return (
-      <div className="Track">
-        <div className="Track-information">
-          {/* <h3><!-- track name will go here --></h3> */}
-          
-          {/* <p><!-- track artist will go here--> | <!-- track album will go here --></p> */}
-        </div>
-        {/* <button class="Track-action"><!-- + or - will go here --></button> */}
+function Track (props) {
+  function renderAction() {
+    if (props.isRemoval) {
+      return <button className="Track-action text-lightblue hover:text-hoverblue active:text-activeblue text-xl font-bold" onClick={passTrack}>+</button>
+    } else {
+      return <button className="Track-action text-lightblue hover:text-hoverblue active:text-activeblue text-xl font-bold">-</button>
+    }
+  };
+
+  function passTrack() {
+    props.onAdd(props.track);
+  };
+
+  return (
+    <div className="Track flex justify-between border-b">
+      <div className="Track-information py-2 overflow-ellipsis overflow-x-hidden">
+        <h3 className="truncate font-bold">{props.track.name}</h3>
+        <p className="truncate">{props.track.artist} | {props.track.album}</p>
       </div>
-    );
-}
+      {renderAction()}
+    </div>
+  );
+};
 
 export default Track;
