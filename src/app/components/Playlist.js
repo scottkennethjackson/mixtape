@@ -15,7 +15,7 @@ function Playlist(props) {
         isRemoval={true}
       />
       <p id="errorMessage" className="hidden mt-4 text-center text-lightblue"></p>
-      <button className="Playlist-save my-4 mx-auto w-fit rounded-full bg-lightblue hover:bg-hoverblue active:bg-activeblue py-2 px-4 text-black">SAVE TO SPOTIFY</button>
+      <button onClick={props.onSave} className="Playlist-save my-4 mx-auto w-fit rounded-full bg-lightblue hover:bg-hoverblue active:bg-activeblue py-2 px-4 text-black">SAVE TO SPOTIFY</button>
     </div>
   );
 };
