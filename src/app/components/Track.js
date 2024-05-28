@@ -3,14 +3,18 @@ import React from "react";
 function Track (props) {
   function renderAction() {
     if (props.isRemoval) {
-      return <button className="Track-action text-lightblue hover:text-hoverblue active:text-activeblue text-xl font-bold" onClick={passTrack}>+</button>
+      return <button className="Track-action text-lightblue hover:text-hoverblue active:text-activeblue text-xl font-bold" onClick={passTrackToRemove}>-</button>
     } else {
-      return <button className="Track-action text-lightblue hover:text-hoverblue active:text-activeblue text-xl font-bold">-</button>
+      return <button className="Track-action text-lightblue hover:text-hoverblue active:text-activeblue text-xl font-bold" onClick={passTrack}>+</button>
     }
   };
 
   function passTrack() {
     props.onAdd(props.track);
+  };
+
+  function passTrackToRemove() {
+    props.onRemove(props.track)
   };
 
   return (

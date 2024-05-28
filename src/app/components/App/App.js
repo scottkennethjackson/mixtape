@@ -36,16 +36,21 @@ const App = () => {
   }
 
   function addTrack(track) {
-    const existingTracks = playlistTracks.find((t) => t.id === track.id);
+    const existingTrack = playlistTracks.find((t) => t.id === track.id);
     const newTrack = playlistTracks.concat(track);
 
-    if (existingTracks) {
+    if (existingTrack) {
       showError();
       errorMessage.innerHTML=`${track.name} already added`;
     } else {
       hideError();
       setPlaylistTracks(newTrack);
     };
+  };
+
+  function removeTrack(track) {
+    const existingTrack = playlistTracks.filter((t) => t.id !== track.id);
+    setPlaylistTracks(existingTrack);
   };
   
   return (
@@ -76,6 +81,7 @@ const App = () => {
         <Playlist
           playlistName={playlistName}
           playlistTracks={playlistTracks}
+          onRemove={removeTrack}
         />
       </div>
     </div>

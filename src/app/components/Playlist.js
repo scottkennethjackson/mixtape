@@ -7,6 +7,8 @@ function Playlist(props) {
       <input defaultValue={"My Mixtape"} className="w-full focus:outline-none border-b-2 focus:border-lightblue bg-transparent focus:text-lightblue font-popins text-2xl font-bold" />
       <Tracklist
         userSearchResults={props.playlistTracks}
+        onRemove={props.onRemove}
+        isRemoval={true}
       />
       <p id="errorMessage" className="hidden mt-4 text-center text-lightblue"></p>
       <button className="Playlist-save my-4 mx-auto w-fit rounded-full bg-lightblue hover:bg-hoverblue active:bg-activeblue py-2 px-4 text-black">SAVE TO SPOTIFY</button>

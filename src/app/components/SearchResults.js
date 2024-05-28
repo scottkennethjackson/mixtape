@@ -7,7 +7,7 @@ function SearchResults (props) {
       <h2 className="border-b-2 font-popins text-2xl font-bold">Search Results</h2>
       <Tracklist
         userSearchResults={props.userSearchResults}
-        isRemoval={true}
+        isRemoval={false}
         onAdd={props.onAdd}
       />
     </div>
