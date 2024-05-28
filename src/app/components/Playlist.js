@@ -2,9 +2,13 @@ import React from "react";
 import Tracklist from "./Tracklist";
 
 function Playlist(props) {
+  function handleNameChange({target}) {
+    props.onNameChange(target.value);
+  };
+
   return (
     <div className="Playlist flex flex-col w-full lg:w-1/2 h-full shadow-bottom bg-darkgrey bg-opacity-70 overflow-scroll p-4">
-      <input defaultValue={"My Mixtape"} className="w-full focus:outline-none border-b-2 focus:border-lightblue bg-transparent focus:text-lightblue font-popins text-2xl font-bold" />
+      <input defaultValue={"My Mixtape"} onChange={handleNameChange} className="w-full focus:outline-none border-b-2 focus:border-lightblue bg-transparent focus:text-lightblue font-popins text-2xl font-bold" />
       <Tracklist
         userSearchResults={props.playlistTracks}
         onRemove={props.onRemove}
