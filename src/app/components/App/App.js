@@ -60,6 +60,10 @@ const App = () => {
   function savePlaylist() {
     const trackURIs = playlistTracks.map((t) => t.uri);
   };
+
+  function search(term) {
+
+  };
   
   return (
   <div className="fixed w-screen h-screen">
@@ -79,7 +83,7 @@ const App = () => {
     </div>
 
     <div className="App flex flex-col items-center mx-15% py-12 h-full text-white">
-      <SearchBar />
+      <SearchBar onSearch={search} />
       
       <div className="App-playlist flex flex-col lg:flex-row items-center justify-between w-full h-full lg:space-x-8 z-50">
         <SearchResults
