@@ -1,4 +1,10 @@
+//import { clientID } from "./Spotify.config";
+//import { redirectUrl } from "./Spotify.config";
+
 let accessToken;
+const clientID = '3e9e90bf1d574d6a964f851e00addc46';
+//const redirectUrl = 'https://scottkennethjackson-mixtape.vercel.app/';
+const redirectUrl = 'http://localhost:3001/';
 
 const Spotify = {
     getAccessToken() {
@@ -19,6 +25,29 @@ const Spotify = {
 
         const redirect = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUrl}`;
         window.location = redirect;
+    },
+
+    search(term) {
+        accessToken = Spotify.getAccessToken();
+        return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+            method: 'GET',
+            headers: { Authorization: `Bearer ${accessToken}` },
+        })
+        .then((response) => response.json())
+        .then((jsonResponse) => {
+            if (!jsonResponse) {
+                console.error('Response error');
+            }
+
+            return jsonResponse.tracks.items.map((t) => ({
+                id: t.id,
+                name: t.name,
+                artist: t.artists[0].name,
+                album: t.album.name,
+                uri: t.uri,
+                artwork: t.album.images[0].url
+            }));
+        });
     }
 };
 

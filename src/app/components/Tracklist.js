@@ -3,14 +3,14 @@ import Track from "./Track";
 
 function Tracklist (props) {
     return (
-      <div className="TrackList font-work">
+      <div className="font-work">
         {props.userSearchResults.map((track) => (
           <Track
-            track={track}
-            key={track.id}
-            isRemoval={props.isRemoval}
-            onAdd={props.onAdd}
-            onRemove={props.onRemove}
+            track={ track }
+            key={ track.id }
+            isRemoval={ props.isRemoval }
+            onAdd={ props.onAdd }
+            onRemove={ props.onRemove }
           />
         ))}
       </div>

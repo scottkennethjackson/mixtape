@@ -9,7 +9,8 @@
     /*border: 1px dotted red;*/
 }
 
-.SearchResults::-webkit-scrollbar {
+#searchResults::-webkit-scrollbar,
+#playlist::-webkit-scrollbar {
     width: 0px;
     background: transparent;
 }

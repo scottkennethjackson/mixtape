@@ -9,8 +9,7 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        '10%': '10%',
-        '15%': '15%'
+        '48%': '48%'
       },
 
       boxShadow: {

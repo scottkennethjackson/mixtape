@@ -4,25 +4,14 @@ import Image from "next/image";
 import backgroundImg from "./background-img.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
+import SearchBar from "../SearchBar";
 import SearchResults from "../SearchResults";
 import Playlist from "../Playlist";
-import SearchBar from "../SearchBar";
+import { Spotify } from "@/util/Spotify/Spotify";
+
 
 const App = () => {
-  const [searchResults, setSearchResults] = useState([
-    {
-      name: "Track 1",
-      artist: "Artist 1",
-      album: "Album 1",
-      id: 1
-    },
-    {
-      name: "Track 2",
-      artist: "Rrtist 2",
-      album: "Album 2",
-      id: 2
-    }
-  ]);
+  const [searchResults, setSearchResults] = useState([]);
 
   const [playlistName, setPlaylistName] = useState("My Mixtape");
   const [playlistTracks, setPlaylistTracks] = React.useState([]);
@@ -50,52 +39,59 @@ const App = () => {
 
   function removeTrack(track) {
     const existingTrack = playlistTracks.filter((t) => t.id !== track.id);
+    hideError();
     setPlaylistTracks(existingTrack);
   };
 
   function updatePlaylistName(name) {
+    hideError();
     setPlaylistName(name);
   };
 
   function savePlaylist() {
     const trackURIs = playlistTracks.map((t) => t.uri);
+    hideError();
   };
 
   function search(term) {
-
+    hideError();
+    Spotify.search(term).then((result) => setSearchResults(result));
   };
   
   return (
-  <div className="fixed w-screen h-screen">
+  <div className="fixed flex items-center justify-center w-screen h-screen">
     <Image
       src={ backgroundImg }
-      alt="A cool-looking man wearing headphones and listening to music"
-      fill={true}
-      objectFit="cover"
+      alt="A cool-looking man with a backwards cap, wearing headphones and listening to music"
+      fill={ true }
       style={{
-        zIndex: "-1"
+        zIndex: "-1",
+        objectFit: "cover"
       }}
     />
     
-    <div className="h-12 flex fixed items-center justify-center space-x-1 shadow-md bg-darkgrey w-full py-2 text-center text-lightblue">
-      <FontAwesomeIcon icon={ faSpotify } className='h-8'/>
+    <div className="flex fixed top-0 items-center justify-center space-x-1 w-full h-12 shadow-md bg-darkgrey text-lightblue">
+      <FontAwesomeIcon
+        icon={ faSpotify }
+        className='h-8'
+      />
       <h1 className="font-marker text-3xl">Mixtape</h1>
     </div>
 
-    <div className="App flex flex-col items-center mx-15% py-12 h-full text-white">
-      <SearchBar onSearch={search} />
+    <div className="flex flex-col items-center justify-between mt-12 space-y-4 w-4/5 h-4/5 text-white">
+      <SearchBar onSearch={ search } />
       
-      <div className="App-playlist flex flex-col lg:flex-row items-center justify-between w-full h-full lg:space-x-8 z-50">
+      <div className="flex flex-col justify-between lg:flex-row w-full h-4/5">
         <SearchResults
-          userSearchResults={searchResults}
-          onAdd={addTrack}
+          userSearchResults={ searchResults }
+          onAdd={ addTrack }
         />
         <Playlist
-          playlistName={playlistName}
-          playlistTracks={playlistTracks}
-          onRemove={removeTrack}
-          onNameChange={updatePlaylistName}
-          onSave={savePlaylist}
+          playlistName={ playlistName }
+          playlistTracks={ playlistTracks }
+          onRemove={ removeTrack }
+          onNameChange={ updatePlaylistName }
+          onSave={ savePlaylist }
         />
       </div>
     </div>
