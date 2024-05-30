@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
@@ -15,10 +15,12 @@ const App = () => {
   const [playlistName, setPlaylistName] = useState("My Mixtape");
   const [playlistTracks, setPlaylistTracks] = React.useState([]);
 
-  window.addEventListener('load', () => {
-    if (window.location.href.match(/access_token=([^&]*)/)) {
-      loginScreen.classList.add('hidden');
-    };
+  useEffect(() => {
+    window.addEventListener('load', () => {
+      if (window.location.href.match(/access_token=([^&]*)/)) {
+        loginScreen.classList.add('hidden');
+      };
+    });
   });
   
   function showError() {
