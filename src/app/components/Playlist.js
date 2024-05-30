@@ -23,11 +23,11 @@ function Playlist(props) {
           />
         </div>
       </div>
-      <div className="flex flex-col items-center space-y-4">
+      <div className="flex flex-col items-center space-y-2">
         <p id="errorMessage" className="hidden text-lightblue font-poppins font-bold"></p>
         <button
           onClick={ props.onSave }
-          className="rounded-full bg-lightblue hover:bg-hoverblue active:bg-activeblue py-2 px-4 text-black">SAVE TO SPOTIFY</button>
+          className="rounded-full bg-lightblue hover:bg-hoverblue active:bg-activeblue py-2 px-4 text-black font-bold">SAVE TO SPOTIFY</button>
       </div>
     </div>
   );

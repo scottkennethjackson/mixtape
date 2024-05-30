@@ -10,7 +10,7 @@ function handleFocus() {
 function handleBlur() {
   searchSymbol.classList.remove('text-lightblue');
   searchSymbol.classList.add('text-black');
-}
+};
 
 function SearchBar (props) {
   const [term, setTerm] = useState('');
@@ -31,6 +31,7 @@ function SearchBar (props) {
           id="searchSymbol"
           className="h-4 text-black"
         />
+
         <input 
           onFocus={ handleFocus }
           onBlur={ handleBlur }
@@ -41,8 +42,7 @@ function SearchBar (props) {
       </div>
       <button
         onClick={ passTerm }
-        id="searchBtn"
-        className="mx-auto rounded-full bg-lightblue hover:bg-hoverblue active:bg-activeblue py-2 px-4 text-black">SEARCH
+        className="mx-auto rounded-full bg-lightblue hover:bg-hoverblue active:bg-activeblue py-2 px-4 text-black font-bold">SEARCH
       </button>
     </div>
   );

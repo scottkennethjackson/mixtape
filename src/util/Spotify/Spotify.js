@@ -1,10 +1,4 @@
-//import { clientID } from "./Spotify.config";
-//import { redirectUrl } from "./Spotify.config";
-
 let accessToken;
-const clientID = '3e9e90bf1d574d6a964f851e00addc46';
-//const redirectUrl = 'https://scottkennethjackson-mixtape.vercel.app/';
-const redirectUrl = 'http://localhost:3001/';
 
 const Spotify = {
     getAccessToken() {
@@ -22,9 +16,6 @@ const Spotify = {
 
             return accessToken;
         };
-
-        const redirect = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUrl}`;
-        window.location = redirect;
     },
 
     search(term) {
