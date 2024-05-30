@@ -41,6 +41,7 @@ function SearchBar (props) {
       </div>
       <button
         onClick={ passTerm }
+        id="searchBtn"
         className="mx-auto rounded-full bg-lightblue hover:bg-hoverblue active:bg-activeblue py-2 px-4 text-black">SEARCH
       </button>
     </div>

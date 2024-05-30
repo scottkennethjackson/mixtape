@@ -12,7 +12,6 @@ import { Spotify } from "@/util/Spotify/Spotify";
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
-
   const [playlistName, setPlaylistName] = useState("My Mixtape");
   const [playlistTracks, setPlaylistTracks] = React.useState([]);
 
@@ -30,7 +29,7 @@ const App = () => {
 
     if (existingTrack) {
       showError();
-      errorMessage.innerHTML=`${track.name} already added`;
+      errorMessage.innerHTML = `${track.name} already added`;
     } else {
       hideError();
       setPlaylistTracks(newTrack);
@@ -51,6 +50,10 @@ const App = () => {
   function savePlaylist() {
     const trackURIs = playlistTracks.map((t) => t.uri);
     hideError();
+    Spotify.savePlaylist(playlistName, trackURIs).then(() => {
+      playlistTitle.value = 'New Mixtape';
+      setPlaylistTracks([]);
+    });
   };
 
   function search(term) {

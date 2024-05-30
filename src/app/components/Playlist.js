@@ -12,6 +12,7 @@ function Playlist(props) {
         <input
           defaultValue={ "My Mixtape" }
           onChange={ handleNameChange }
+          id="playlistTitle"
           className="w-full focus:outline-none border-b-2 focus:border-lightblue bg-transparent focus:text-lightblue font-popins text-2xl font-bold"
         />
         <div id="playlist" className="h-full overflow-scroll">
