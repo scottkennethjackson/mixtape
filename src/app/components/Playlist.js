@@ -1,5 +1,6 @@
 import React from "react";
 import Tracklist from "./Tracklist";
+import { Spotify } from "@/util/Spotify/Spotify";
 
 function Playlist(props) {
   function handleNameChange({ target }) {
@@ -12,7 +13,7 @@ function Playlist(props) {
         <input
           defaultValue={ "My Mixtape" }
           onChange={ handleNameChange }
-          id="playlistTitle"
+          id="playlistInput"
           className="w-full focus:outline-none border-b-2 focus:border-lightblue bg-transparent focus:text-lightblue font-popins text-2xl font-bold"
         />
         <div id="playlist" className="h-full overflow-scroll">

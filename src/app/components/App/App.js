@@ -57,7 +57,7 @@ const App = () => {
     const trackURIs = playlistTracks.map((t) => t.uri);
     hideError();
     Spotify.savePlaylist(playlistName, trackURIs).then(() => {
-      playlistTitle.value = 'New Mixtape';
+      playlistInput.value = 'New Mixtape';
       setPlaylistTracks([]);
     });
   };
