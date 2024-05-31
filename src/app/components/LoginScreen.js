@@ -3,6 +3,9 @@ import { clientID } from "@/util/Spotify/Spotify.config";
 import { redirectUrl } from "@/util/Spotify/Spotify.config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
+config.autoAddCss = false;
 
 function LoginScreen() {
     function connectToSpotify() {
@@ -14,7 +17,8 @@ function LoginScreen() {
         <div id="loginScreen" className="flex absolute items-center justify-center h-screen w-screen bg-darkgrey bg-opacity-70">
           <button 
             onClick={ connectToSpotify }
-            className="mx-auto rounded-full bg-lightblue hover:bg-hoverblue active:bg-activeblue py-2 px-4 text-black text-2xl font-bold"><FontAwesomeIcon icon={ faSpotify } /> Connect to Spotify
+            className="mx-auto rounded-full bg-lightblue hover:bg-hoverblue active:bg-activeblue py-2 px-4 text-black text-2xl font-bold">
+                <FontAwesomeIcon icon={ faSpotify } /> Connect to Spotify
             </button>
         </div>
     );
