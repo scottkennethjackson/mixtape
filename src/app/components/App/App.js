@@ -1,14 +1,16 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 import Image from "next/image";
 import backgroundImg from "./background-img.jpg";
 import SearchBar from "../SearchBar";
 import SearchResults from "../SearchResults";
 import Playlist from "../Playlist";
 import LoginScreen from "../LoginScreen";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 import { Spotify } from "@/util/Spotify/Spotify";
+
+faSpotify.autoAddCss = false;
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
