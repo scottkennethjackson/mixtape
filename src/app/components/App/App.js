@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import LoginScreen from "../LoginScreen";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
+import LoginScreen from "../LoginScreen";
 import backgroundImg from "./background-img.jpg";
 import SearchBar from "../SearchBar";
 import SearchResults from "../SearchResults";
@@ -79,6 +79,8 @@ const App = () => {
       <h1 className="font-marker text-3xl">Mixtape</h1>
     </div>
 
+    <LoginScreen/>
+
     <Image
       src={ backgroundImg }
       alt="A cool-looking man with a backwards cap, wearing headphones and listening to music"
@@ -106,8 +108,6 @@ const App = () => {
         />
       </div>
     </div>
-
-    <LoginScreen/>
   </div>
   );
 };
