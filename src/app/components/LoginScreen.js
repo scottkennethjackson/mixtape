@@ -17,7 +17,7 @@ function LoginScreen() {
         <div id="loginScreen" className="flex absolute items-center justify-center h-screen w-screen bg-darkgrey bg-opacity-70">
           <button 
             onClick={ connectToSpotify }
-            className="mx-auto rounded-full bg-lightblue hover:bg-hoverblue active:bg-activeblue py-2 px-4 text-black text-2xl font-bold">
+            className="mx-auto rounded-full bg-lightblue hover:bg-hoverblue active:bg-activeblue py-2 px-4 text-black text-xl font-bold">
                 <FontAwesomeIcon icon={ faSpotify } /> Connect to Spotify
             </button>
         </div>
