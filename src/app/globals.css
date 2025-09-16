@@ -11,11 +11,6 @@
 
 @theme inline {
   --color-blue: #36C5F0;
+  --color-active-blue: #2EACD3;
   --font-marker: "Permanent Marker", sans-serif
-}
-
-body {
-  background-image: url("/images/background.jpg");
-  background-size: cover;
-  background-position: right;
 }

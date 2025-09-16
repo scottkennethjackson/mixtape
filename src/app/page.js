@@ -1,9 +1,13 @@
+import React from "react";
+import App from "@/components/App";
+
 export default function Home() {
   return (
-    <div className="px-4 py-8 min-h-screen bg-black/20">
-      <main className="flex justify-center items-center">
-        <h1 className="font-marker text-6xl text-blue">Mixtape</h1>
-      </main>
-    </div>
+    <main
+      className="fixed w-full min-h-screen bg-cover bg-right"
+      style={{ backgroundImage: "url('./images/background.jpg')" }}
+    >
+      <App />
+    </main>
   );
 }
