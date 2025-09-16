@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import Playlist from "./Playlist";
+import { Spotify } from "@/utils/Spotify/Spotify";
 
 const App = () => {
     const [searchResults, setSearchResults] = useState([]);
@@ -52,7 +53,7 @@ const App = () => {
 
     function search(term) {
         hideError();
-        //Spotify.search(term).then((result) => setSearchResults(result));
+        Spotify.search(term).then((result) => setSearchResults(result));
     };
 
     return (

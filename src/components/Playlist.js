@@ -1,6 +1,5 @@
 import React from "react";
 import Tracklist from "./Tracklist";
-import { Spotify } from "@/utils/Spotify/Spotify";
 
 function Playlist(props) {
   function handleNameChange({ target }) {
