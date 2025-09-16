@@ -17,7 +17,7 @@ const Spotify = {
           const expiresIn = Number(expiryTime[1]);
 
           window.setTimeout(() => (accessToken = ""), expiresIn * 1000);
-          window.history.pushState("Access token", null, "/");
+          window.history.pushState({}, "", "/");
 
           return accessToken;
         } else {
