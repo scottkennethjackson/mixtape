@@ -1,8 +1,13 @@
+const clientID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
+const redirectUri = process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI;
+
 let accessToken;
 
 const Spotify = {
     getAccessToken() {
         if (accessToken) return accessToken;
+
+        if (typeof window == "undefined") return;
 
         const tokenInURL = window.location.href.match(/access_token=([^&]*)/);
         const expiryTime = window.location.href.match(/expires_in=([^&]*)/);
@@ -15,7 +20,14 @@ const Spotify = {
             window.history.pushState('Access token', null, '/');
 
             return accessToken;
-        };
+        } else {
+            const scopes = ["playlist-modify-public"];
+            const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=${encodeURIComponent(
+              scopes.join(" ")
+            )}&redirect_uri=${encodeURIComponent(redirectUri)}`;
+
+            window.location = authUrl;
+        }
     },
 
     search(term) {
