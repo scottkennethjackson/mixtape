@@ -8,14 +8,14 @@ function Playlist(props) {
 
   return (
     <div id="playlist" className="p-4 w-full max-w-lg bg-black/30">
-      <div className="h-4/5">
+      <div>
         <input
           defaultValue={ "My Mixtape" }
           onChange={ handleNameChange }
           id="playlistInput"
           className="font-marker w-full text-2xl text-white focus:text-blue border-blue border-b-2"
         />
-        <div id="playlist" className="overflow-scroll pb-4 h-full">
+        <div id="playlist" className="overflow-scroll pb-4">
           <Tracklist
             userSearchResults={ props.playlistTracks }
             onRemove={ props.onRemove }

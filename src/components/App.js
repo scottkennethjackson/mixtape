@@ -63,7 +63,7 @@ const App = () => {
                 <SearchBar onSearch={ search } />
             </div>
 
-            <div className="flex flex-col md:flex-row items-center md:items-start justify-center w-full md:space-x-4 space-y-4 md:space-y-0 bg-blue">
+            <div className="flex flex-col md:flex-row items-center md:items-start justify-center w-full md:space-x-4 space-y-4 md:space-y-0">
                 <SearchResults
                   userSearchResults={ searchResults }
                   onAdd={ addTrack }
