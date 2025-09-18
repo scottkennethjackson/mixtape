@@ -14,3 +14,20 @@
   --color-active-blue: #2EACD3;
   --font-marker: "Permanent Marker", sans-serif
 }
+
+html, body {
+  height: 100%;
+  overscroll-behavior: none;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html, #tracks, #my-mixtape {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
