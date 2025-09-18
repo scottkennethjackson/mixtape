@@ -23,12 +23,12 @@ function SearchBar (props) {
           onChange={ handleTermChange }
           onKeyDown={ handleKeyDown }
           id="searchInput"
-          className="px-4 py-2 w-64 text-center bg-white rounded-s-full"
+          className="px-4 py-2 w-2/3 sm:w-64 text-center bg-white rounded-s-full"
           placeholder="Enter a Song, Artist or Album"
         />
         <button
           onClick={ passTerm }
-          className="px-4 py-2 w-32 font-semibold text-center bg-blue active:bg-active-blue rounded-e-full cursor-pointer">SEARCH
+          className="px-4 py-2 w-1/3 sm:w-32 font-semibold text-center bg-blue active:bg-active-blue rounded-e-full cursor-pointer">SEARCH
         </button>
       </div>
   );
