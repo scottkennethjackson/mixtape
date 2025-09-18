@@ -9,6 +9,7 @@ const App = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [playlistName, setPlaylistName] = useState("My Mixtape");
     const [playlistTracks, setPlaylistTracks] = React.useState([]);
+    const [error, setError] = useState("");
   
     useEffect(() => {
       const pending = localStorage.getItem("pendingSearch");
@@ -20,44 +21,41 @@ const App = () => {
       }
     }, []);
 
-    function showError() {
-        errorMessage.classList.remove('hidden');
+    function showError(msg) {
+        setError(msg);
     };
 
     function hideError() {
-        errorMessage.classList.add('hidden');
+        setError("")
     };
 
     function addTrack(track) {
         const existingTrack = playlistTracks.find((t) => t.id === track.id);
-        const newTrack = playlistTracks.concat(track);
 
         if (existingTrack) {
-          showError();
-          errorMessage.innerHTML = `${track.name} already added`;
+          showError(`${track.name} already added`);
         } else {
           hideError();
-          setPlaylistTracks(newTrack);
+          setPlaylistTracks([...playlistTracks, track]);
         };
     };
 
     function removeTrack(track) {
-        const existingTrack = playlistTracks.filter((t) => t.id !== track.id);
+        setPlaylistTracks(playlistTracks.filter((t) => t.id !== track.id));
         hideError();
-        setPlaylistTracks(existingTrack);
     };
 
     function updatePlaylistName(name) {
-        hideError();
         setPlaylistName(name);
+        hideError();
     };
 
     function savePlaylist() {
         const trackURIs = playlistTracks.map((t) => t.uri);
         hideError();
         Spotify.savePlaylist(playlistName, trackURIs).then(() => {
-          playlistInput.value = 'New Mixtape';
           setPlaylistTracks([]);
+          playlistInput.value = 'New Mixtape';
         });
     };
 
@@ -85,6 +83,7 @@ const App = () => {
                   onRemove={ removeTrack }
                   onNameChange={ updatePlaylistName }
                   onSave={ savePlaylist }
+                  error={ error }
                 />
             </div>
             )}
