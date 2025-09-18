@@ -7,7 +7,7 @@ function Playlist(props) {
   };
 
   return (
-    <div id="my-mixtape" className="flex flex-col relative p-4 pb-0 w-full md:w-1/2 max-w-lg h-96 bg-black/30">
+    <div id="my-mixtape" className="flex flex-col relative p-4 pb-0 w-full md:w-1/2 max-w-lg h-96 bg-black/30 shadow-xl shadow-black/50">
       <div className="flex space-between border-blue border-b-2">
         <input
           defaultValue={ "My Mixtape" }

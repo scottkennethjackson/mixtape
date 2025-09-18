@@ -65,9 +65,9 @@ const App = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center px-4 py-16 space-y-12 min-h-screen bg-black/20">
+        <div className="flex flex-col items-center justify-center px-4 py-16 space-y-12 min-h-screen bg-black/10">
             <div className="flex flex-col items-center space-y-4">
-                <h1 className="font-marker text-7xl sm:text-8xl text-blue text-shadow-md text-shadow-black/30">Mixtape</h1>
+                <h1 className="font-marker text-7xl sm:text-8xl text-blue text-shadow-md text-shadow-black/50">Mixtape</h1>
                 <SearchBar onSearch={ search } />
             </div>
 

@@ -18,7 +18,7 @@ function SearchBar (props) {
   };
 
   return (
-      <div className="rounded-full shadow-md shadow-black/30">
+      <div className="rounded-full shadow-lg shadow-black/50">
         <input 
           onChange={ handleTermChange }
           onKeyDown={ handleKeyDown }
