@@ -6,7 +6,6 @@ let accessToken;
 const Spotify = {
     getAccessToken() {
         if (accessToken) return accessToken;
-
         if (typeof window === "undefined") return;
 
         const tokenInURL = window.location.href.match(/access_token=([^&]*)/);
@@ -18,6 +17,12 @@ const Spotify = {
 
           window.setTimeout(() => (accessToken = ""), expiresIn * 1000);
           window.history.pushState({}, "", "/");
+
+          const pending = localStorage.getItem("pendingSearch");
+          if (pending) {
+            localStorage.removeItem("pendingSearch");
+            Spotify.search(pending);
+        }
 
           return accessToken;
         } else {
@@ -31,7 +36,14 @@ const Spotify = {
     },
 
     async search(term) {
+        if (typeof window !== "undefined") {
+          localStorage.setItem("pendingSearch", term);
+        }
+
         accessToken = Spotify.getAccessToken();
+
+        if (!accessToken) return
+
         const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
             method: 'GET',
             headers: { Authorization: `Bearer ${accessToken}` },
@@ -39,6 +51,7 @@ const Spotify = {
         const jsonResponse = await response.json();
         if (!jsonResponse) {
             console.error('Response error');
+            return [];
         }
         return jsonResponse.tracks.items.map((t) => ({
             id: t.id,

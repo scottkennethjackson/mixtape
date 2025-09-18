@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import Playlist from "./Playlist";
@@ -10,6 +10,16 @@ const App = () => {
     const [playlistName, setPlaylistName] = useState("My Mixtape");
     const [playlistTracks, setPlaylistTracks] = React.useState([]);
   
+    useEffect(() => {
+      const pending = localStorage.getItem("pendingSearch");
+      if (pending) {
+        Spotify.search(pending).then((result) => {
+          setSearchResults(result);
+          localStorage.removeItem("pendingSearch");
+        });
+      }
+    }, []);
+
     function showError() {
         errorMessage.classList.remove('hidden');
     };
@@ -57,13 +67,14 @@ const App = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center px-4 py-8 space-y-12 min-h-screen bg-black/20">
+        <div className="flex flex-col items-center justify-center px-4 py-16 space-y-12 min-h-screen bg-black/20">
             <div className="flex flex-col items-center space-y-4">
-                <h1 className="font-marker text-7xl text-blue text-shadow-md text-shadow-black/30">Mixtape</h1>
+                <h1 className="font-marker text-7xl sm:text-8xl text-blue text-shadow-md text-shadow-black/30">Mixtape</h1>
                 <SearchBar onSearch={ search } />
             </div>
 
-            <div className="flex flex-col md:flex-row items-center md:items-start justify-center w-full md:space-x-4 space-y-4 md:space-y-0">
+            {searchResults.length > 0 && (
+            <div id="playlist-elements" className="flex flex-col md:flex-row items-center md:items-start justify-center w-full md:space-x-4 space-y-4 md:space-y-0">
                 <SearchResults
                   userSearchResults={ searchResults }
                   onAdd={ addTrack }
@@ -76,6 +87,7 @@ const App = () => {
                   onSave={ savePlaylist }
                 />
             </div>
+            )}
         </div>
     );
 };
