@@ -38,7 +38,7 @@ function Playlist(props) {
           isRemoval={ true }
         />
       </div>
-      <p className={`absolute -bottom-8 left-0 w-full font-semibold text-center text-red-500 ${props.error ? "" : "hidden"}`}></p>
+      <p className={`absolute -bottom-8 left-0 w-full font-semibold text-center text-red-500 ${props.error ? "" : "hidden"}`}>{props.error}</p>
     </div>
   );
 };
