@@ -3,7 +3,7 @@ import Track from "./Track";
 
 function Tracklist (props) {
   return (
-    <div>
+    <div className="pb-4">
       {props.userSearchResults.map((track) => (
         <Track
           track={ track }

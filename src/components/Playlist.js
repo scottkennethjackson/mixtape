@@ -7,28 +7,38 @@ function Playlist(props) {
   };
 
   return (
-    <div id="playlist" className="p-4 w-full max-w-lg bg-black/30">
-      <div>
+    <div id="my-mixtape" className="flex flex-col relative p-4 pb-0 w-full md:w-1/2 max-w-lg h-96 bg-black/30">
+      <div className="flex space-between border-blue border-b-2">
         <input
           defaultValue={ "My Mixtape" }
           onChange={ handleNameChange }
           id="playlistInput"
-          className="font-marker w-full text-2xl text-white focus:text-blue border-blue border-b-2"
+          className="font-marker w-full text-2xl text-white focus:text-blue"
         />
-        <div id="playlist" className="overflow-scroll pb-4">
-          <Tracklist
-            userSearchResults={ props.playlistTracks }
-            onRemove={ props.onRemove }
-            isRemoval={ true }
-          />
-        </div>
-      </div>
-      <div className="flex flex-col items-center pb-4 space-y-2">
-        <p id="errorMessage" className="hidden font-semibold text-red-500"></p>
         <button
           onClick={ props.onSave }
-          className="px-4 py-2 w-48 font-semibold text-center bg-blue active:bg-active-blue rounded-full cursor-pointer">SAVE TO SPOTIFY</button>
+          className="flex items-center cursor-pointer group"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="32px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            className="fill-white group-hover:fill-blue group-active:fill-active-blue"
+          >
+            <path d="M840-680v480q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h480l160 160Zm-80 34L646-760H200v560h560v-446ZM480-240q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM240-560h360v-160H240v160Zm-40-86v446-560 114Z"/>
+          </svg>
+          <span className="ms-1 text-xl font-semibold text-white group-hover:text-blue group-active:text-active-blue">SAVE</span>
+        </button>
       </div>
+      <div id="playlist" className="overflow-y-scroll h-full">
+        <Tracklist
+          userSearchResults={ props.playlistTracks }
+          onRemove={ props.onRemove }
+          isRemoval={ true }
+        />
+      </div>
+      <p id="errorMessage" className="hidden absolute -bottom-8 left-0 w-full font-semibold text-center text-red-500"></p>
     </div>
   );
 };
